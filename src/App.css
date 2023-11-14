@@ -1,0 +1,315 @@
+#root {
+  --dark: #45474b;
+  --primary: #f4ce14;
+  --secondary: #495e57;
+  --light: #f5f7f8;
+  --title: #0174be;
+  --bg: #1a1831;
+
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  margin-bottom: 8em;
+  padding: 2em;
+  text-align: center;
+  font-size: 16px;
+}
+
+.footer_container {
+  background-color: var(--secondary);
+  height: 5em;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 -1px 0.8em var(--light);
+
+  .add_icon {
+    color: var(--primary);
+    font-size: 3em;
+    border-radius: 0.2em;
+    position: relative;
+    left: 1/2;
+    top: -0.5em;
+    background-color: var(--dark);
+    cursor: pointer;
+    box-shadow: 0 0 0.3em var(--light);
+    will-change: filter;
+    transition: filter 300ms;
+  }
+
+  .add_icon:hover {
+    box-shadow: 0 0 0.3em var(--primary);
+    filter: drop-shadow(0 0 1em var(--primary));
+  }
+}
+
+.card_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2em;
+  .card {
+    position: relative;
+    padding: 1.5em 1em;
+    border: 0.1em solid var(--primary);
+    border-radius: 0.4em;
+    cursor: pointer;
+    transition: 300ms;
+
+    .card_title,
+    .card_note {
+      margin: 0.5em 0;
+    }
+
+    .card_title {
+      font-size: 1.2em;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      color: var(--title);
+    }
+
+    .card_note {
+      font-size: 0.9em;
+      white-space: pre-line;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      /* text-overflow: ellipsis; */
+    }
+
+    .date_time_section {
+      position: absolute;
+      font-size: 0.7em;
+      color: var(--primary);
+      background-color: var(--bg);
+      top: -9px;
+      right: 12px;
+      transition: 300ms;
+    }
+
+    .action_buttons {
+      font-size: 1.1em;
+      display: flex;
+      gap: 6px;
+      position: absolute;
+      bottom: -12px;
+      right: 6px;
+
+      .edit_icon,
+      .delete_icon {
+        display: none;
+        background-color: var(--primary);
+        border-radius: 50%;
+        padding: 0.2em;
+        will-change: filter;
+        transition: filter, 300ms;
+      }
+
+      .edit_icon:hover,
+      .delete_icon:hover {
+        filter: drop-shadow(0 0 0.3em var(--light));
+      }
+    }
+  }
+
+  .card:hover {
+    box-shadow: 0 0 2em 0 var(--primary);
+
+    .edit_icon,
+    .delete_icon {
+      display: block;
+    }
+
+    .date_time_section {
+      top: 0;
+      background-color: transparent;
+    }
+
+    .date_time_section > span {
+      filter: drop-shadow(0 0 0.5em var(--light));
+      color: var(--light);
+    }
+  }
+}
+
+.no_task_title {
+  font-size: 1.5em;
+  color: var(--primary);
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+}
+
+.form_container {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  min-height: 100vh;
+  min-width: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  > form {
+    margin: 0 5em;
+    padding: 1em;
+    background-color: var(--secondary);
+    border-radius: 0.3em;
+    position: relative;
+    display: grid;
+    grid-template-areas:
+      "title title title title"
+      "note note note note"
+      ". . close add";
+
+    gap: 1em;
+
+    > input,
+    textarea,
+    button {
+      outline: none;
+      border: none;
+      padding: 0.4em 0.6em;
+      background-color: transparent;
+    }
+
+    > input {
+      grid-area: title;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      /* min-height: 2em; */
+      border-bottom: 0.2em solid var(--primary);
+    }
+
+    > textarea {
+      grid-area: note;
+      font-size: 1em;
+      border-bottom: 0.2em solid var(--primary);
+    }
+
+    .add_button {
+      grid-area: add;
+      padding: 5px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: var(--dark);
+      transition: 300ms;
+    }
+
+    .add_button:hover {
+      box-shadow: 0 0 0.8em 0.1em var(--primary);
+    }
+
+    .close_button_square {
+      grid-area: close;
+      padding: 5px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: brown;
+      visibility: hidden;
+      transition: 300ms;
+    }
+
+    .close_button_square:hover {
+      box-shadow: 0 0 0.8em 0.1em var(--primary);
+    }
+
+    .close_button {
+      position: absolute;
+      font-size: 1.3em;
+      color: var(--light);
+      right: -1.5em;
+      top: -1.5em;
+      cursor: pointer;
+      will-change: transform;
+      transition: transform 300ms;
+    }
+
+    .close_button:hover {
+      color: #f4ce14;
+      /* filter: drop-shadow(0 0 0.7em var(--primary)); */
+    }
+
+    @media screen and (max-width: 425px) {
+      .close_button {
+        visibility: hidden;
+      }
+      .close_button_square {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.master_card_container {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  min-height: 100vh;
+  min-width: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  .master_card {
+    margin: 0 2em;
+    padding: 1.2em;
+    background-color: var(--secondary);
+    border-radius: 0.3em;
+    position: relative;
+    display: grid;
+    grid-template-areas:
+      "title title title title"
+      "note note note note";
+    gap: 1em;
+    max-width: 450px;
+    
+    .title,
+    .note {
+      margin: 0;
+      text-align: start;
+      max-height: 20vh;
+    }
+    
+    .title {
+      font-size: 1.2em;
+      font-weight: 600;
+      grid-area: title;
+      overflow: auto;
+      color: var(--title);
+    }
+    
+    .note {
+      font-size: 1em;
+      font-weight: 400;
+      grid-area: note;
+      overflow: auto;
+      max-height: 60vh;
+      white-space: pre-line;
+    }
+
+    .close_button {
+      position: absolute;
+      font-size: 1.3em;
+      color: var(--light);
+      right: -1.5em;
+      top: -1.5em;
+      cursor: pointer;
+      transition: 300ms;
+    }
+
+    .close_button:hover {
+      color: #f4ce14;
+    }
+  }
+}
