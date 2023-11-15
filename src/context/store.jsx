@@ -11,7 +11,9 @@ export const StoreContext = createContext({
     setTaskID: () => { },
     notes: [],
     addNotes: () => { },
-    deleteNote: () => { }
+    deleteNote: () => { },
+    setCompleted: () => { },
+    setInCompleted: () => { }
 })
 
 export const StoreContextProvider = ({ children }) => {
@@ -38,6 +40,23 @@ export const StoreContextProvider = ({ children }) => {
         setIsLoaded(!isLoaded)
     }
 
+    const setCompleted = (id) => {
+        let res = notesArray.filter((note) => note?.id == id)
+        res[0].isCompleted = true
+        notesArray = notesArray?.filter((n) => n.id == id ? { ...res[0] } : n)
+        localStorage.setItem('notes', JSON.stringify(notesArray))
+        setIsLoaded(!isLoaded)
+    }
+
+    const setInCompleted = (id) => {
+        console.log(id);
+        let res = notesArray.filter((note) => note?.id == id)
+        res[0].isCompleted = false
+        notesArray = notesArray?.filter((n) => n.id == id ? { ...res[0] } : n)
+        localStorage.setItem('notes', JSON.stringify(notesArray))
+        setIsLoaded(!isLoaded)
+    }
+
     useEffect(() => {
         if (notesArray?.length > 0) {
             setNotes(notesArray)
@@ -55,7 +74,9 @@ export const StoreContextProvider = ({ children }) => {
         taskId,
         setTaskID,
         isMasterCardOpen,
-        setIsMasterCardOpen
+        setIsMasterCardOpen,
+        setCompleted,
+        setInCompleted
     }
 
     return (

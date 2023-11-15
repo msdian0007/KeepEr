@@ -10,7 +10,13 @@ export const MasterForm = () => {
         id: uuid(),
         note: '',
         title: '',
+        isCompleted: false,
     })
+
+    const handleOnClose = () => {
+        setTaskID(null)
+        setIsFormOpen(false)
+    }
 
     const handleOnChange = (e) => {
         let { name, value } = e.target
@@ -30,7 +36,6 @@ export const MasterForm = () => {
         setTaskID(null)
         setIsFormOpen(false)
     }
-
     useEffect(() => {
         if (taskId) {
             let res = notes?.filter((note) => note.id === taskId)
@@ -61,9 +66,9 @@ export const MasterForm = () => {
                         onChange={handleOnChange}
                         required
                     />
-                    <button className='close_button_square' onClick={() => setIsFormOpen(false)}>close</button>
+                    <button className='close_button_square' onClick={handleOnClose}>close</button>
                     <button className='add_button' type='submit'>Add</button>
-                    <AiOutlineClose className='close_button' onClick={() => setIsFormOpen(false)} />
+                    <AiOutlineClose className='close_button' onClick={handleOnClose} />
                 </form>
             </div>
         </>

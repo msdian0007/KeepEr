@@ -1,8 +1,49 @@
-# React + Vite
+# React To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple to-do app built with React.js.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Add tasks to your to-do list.
+- Mark tasks as completed.
+- Delete tasks from the list.
+- Responsive design for various screen sizes.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/msdian0007/keeper.git
+
+   cd react-todo-app
+
+    npm install
+
+## Usage
+
+1. Start the development server:
+
+   ```bash
+   npm start
+
+   Visit http://localhost:3000 in your web browser to use the app.
+   ```
+
+## Screenshots
+
+
+
+## License
+
+   - This project is licensed under the MIT License - see the LICENSE file for details.
+   - Feel free to add more sections or details based on the specific features and requirements of your to-do app.

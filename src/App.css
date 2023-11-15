@@ -89,28 +89,95 @@
       transition: 300ms;
     }
 
-    .action_buttons {
-      font-size: 1.1em;
+    .complete_button{
+      font-size: 1.25em;
       display: flex;
-      gap: 6px;
+      gap: 5px;
+      /* justify-content: center; */
       position: absolute;
-      bottom: -12px;
-      right: 6px;
+      left: 10px;
+      bottom: 10px;
+
+      .check_icon {
+        display: none;
+        color: var(--primary);
+        padding: 0.1em;
+        transition: 300ms;
+      }
+    }
+
+
+    .action_buttons {
+      font-size: 1.25em;
+      display: flex;
+      gap: 5px;
+      /* justify-content: center; */
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
 
       .edit_icon,
       .delete_icon {
         display: none;
-        background-color: var(--primary);
+        color: var(--primary);
+        background-color: var(--secondary);
         border-radius: 50%;
-        padding: 0.2em;
-        will-change: filter;
-        transition: filter, 300ms;
+        padding: 0.1em;
+        /* will-change: filter; */
+        transition: 300ms;
       }
 
-      .edit_icon:hover,
-      .delete_icon:hover {
-        filter: drop-shadow(0 0 0.3em var(--light));
+      .edit_icon:hover {
+        color: #ffff;
       }
+      .delete_icon:hover {
+        color: crimson;
+        /* filter: drop-shadow(0 0 0.3em var(--primary)); */
+      }
+
+      
+    }
+    .complete_button {
+      font-size: 1.25em;
+      display: flex;
+      gap: 5px;
+      /* justify-content: center; */
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+
+      .edit_icon {
+        display: none;
+        color: var(--primary);
+        background-color: var(--secondary);
+        border-radius: 50%;
+        padding: 0.1em;
+        /* will-change: filter; */
+        transition: 300ms;
+      }
+
+      .edit_icon:hover {
+        color: #ffff;
+      }
+    }
+
+    .view_button {
+      display: none;
+      will-change: filter;
+      transition: filter, 300ms;
+    }
+    .view_button:hover {
+      font-size: 1.5em;
+      color: var(--primary);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
     }
   }
 
@@ -120,16 +187,207 @@
     .edit_icon,
     .delete_icon {
       display: block;
+      z-index: 200;
     }
 
     .date_time_section {
       top: 0;
+      z-index: 200;
       background-color: transparent;
     }
 
     .date_time_section > span {
       filter: drop-shadow(0 0 0.5em var(--light));
       color: var(--light);
+    }
+
+    .view_button {
+      font-size: 1.5em;
+      color: var(--primary);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      border-radius: 0.4em;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .eye_icon:hover {
+      color: #ffff;
+      filter: drop-shadow(0 0 0.3em var(--light));
+    }
+
+    .check_icon{
+      display: block;
+      z-index: 200;
+    }
+
+    .check_icon:hover{
+      color: #ffff;
+      filter: drop-shadow(0 0 0.3em var(--light));
+    }
+  }
+
+  .task_completed {
+    position: relative;
+    padding: 1.5em 1em;
+    border: 0.1em solid var(--secondary);
+    border-radius: 0.4em;
+    cursor: pointer;
+    transition: 300ms;
+    text-decoration: line-through;
+
+    .card_title,
+    .card_note {
+      margin: 0.5em 0;
+    }
+
+    .card_title {
+      font-size: 1.2em;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      color: var(--secondary);
+    }
+
+    .card_note {
+      font-size: 0.9em;
+      white-space: pre-line;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      /* text-overflow: ellipsis; */
+    }
+
+    .date_time_section {
+      position: absolute;
+      font-size: 0.7em;
+      color: var(--secondary);
+      background-color: var(--bg);
+      top: -9px;
+      right: 12px;
+      transition: 300ms;
+    }
+
+    .action_buttons {
+      font-size: 1.25em;
+      display: flex;
+      gap: 5px;
+      /* justify-content: center; */
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+
+      .edit_icon,
+      .delete_icon {
+        display: none;
+        color: var(--primary);
+        background-color: var(--secondary);
+        border-radius: 50%;
+        padding: 0.1em;
+        /* will-change: filter; */
+        transition: 300ms;
+      }
+
+      .edit_icon:hover {
+        color: #ffff;
+      }
+      .delete_icon:hover {
+        color: crimson;
+        /* filter: drop-shadow(0 0 0.3em var(--primary)); */
+      }
+    }
+
+    .complete_button {
+      font-size: 1.25em;
+      display: flex;
+      gap: 5px;
+      /* justify-content: center; */
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+
+      .check_icon {
+        display: none;
+        color: var(--primary);
+        padding: 0.1em;
+        transition: 300ms;
+      }
+
+    }
+
+    .view_button {
+      display: none;
+      will-change: filter;
+      transition: filter, 300ms;
+    }
+    .view_button:hover {
+      font-size: 1.5em;
+      color: var(--primary);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .task_completed:hover {
+    box-shadow: 0 0 2em 0 var(--light);
+
+    .edit_icon,
+    .delete_icon {
+      display: block;
+      z-index: 200;
+    }
+
+    .check_icon {
+      display: block;
+      z-index: 200;
+    }
+
+    .date_time_section {
+      top: 0;
+      z-index: 200;
+      background-color: transparent;
+    }
+
+    .date_time_section > span {
+      /* filter: drop-shadow(0 0 0.5em var(--light)); */
+      color: var(--secondary);
+    }
+
+    .view_button {
+      font-size: 1.5em;
+      color: var(--primary);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      border-radius: 0.4em;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .eye_icon:hover {
+      color: #ffff;
+      filter: drop-shadow(0 0 0.3em var(--light));
+    }
+
+    .check_icon:hover {
+      color: #ffff;
+      filter: drop-shadow(0 0 0.3em var(--light));
     }
   }
 }
@@ -143,16 +401,16 @@
 }
 
 .form_container {
-  display: flex;
-  place-items: center;
-  place-content: center;
   position: fixed;
   right: 0;
   left: 0;
   top: 0;
   min-height: 100vh;
-  min-width: 100%;
-  z-index: 100;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  /* min-width: 100%; */
+  z-index: 400;
   background-color: rgba(0, 0, 0, 0.8);
 
   > form {
@@ -166,12 +424,12 @@
       "title title title title"
       "note note note note"
       ". . close add";
-
     gap: 1em;
 
     > input,
     textarea,
     button {
+      /* width: fit-content; */
       outline: none;
       border: none;
       padding: 0.4em 0.6em;
@@ -244,6 +502,10 @@
       .close_button_square {
         visibility: visible;
       }
+
+      .form_container {
+        /* min-width: 200px; */
+      }
     }
   }
 }
@@ -258,7 +520,7 @@
   top: 0;
   min-height: 100vh;
   min-width: 100%;
-  z-index: 100;
+  z-index: 400;
   background-color: rgba(0, 0, 0, 0.8);
 
   .master_card {
@@ -273,14 +535,14 @@
       "note note note note";
     gap: 1em;
     max-width: 450px;
-    
+
     .title,
     .note {
       margin: 0;
       text-align: start;
       max-height: 20vh;
     }
-    
+
     .title {
       font-size: 1.2em;
       font-weight: 600;
@@ -288,7 +550,7 @@
       overflow: auto;
       color: var(--title);
     }
-    
+
     .note {
       font-size: 1em;
       font-weight: 400;
