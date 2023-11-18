@@ -8,6 +8,7 @@ export const Footer = () => {
         <>
             <div className="footer_container">
                 <IoMdAdd className="add_icon" onClick={() => setIsFormOpen(true)} />
+                {/* <h5 className='author_line'>Made with 💛 by 🍁</h5> */}
             </div>
         </>
     )

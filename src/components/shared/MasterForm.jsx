@@ -25,7 +25,7 @@ export const MasterForm = () => {
 
     const getDateAndTime = () => {
         let date = new Date()
-        let dateString = date.toLocaleDateString()
+        let dateString = date.toDateString()
         let timeString = date.toLocaleTimeString()
         return { dateString, timeString }
     }

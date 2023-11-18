@@ -22,6 +22,7 @@
   right: 0;
   bottom: 0;
   box-shadow: 0 -1px 0.8em var(--light);
+  z-index: 200;
 
   .add_icon {
     color: var(--primary);
@@ -41,19 +42,24 @@
     box-shadow: 0 0 0.3em var(--primary);
     filter: drop-shadow(0 0 1em var(--primary));
   }
+
+  /* .author_line{
+
+  } */
 }
 
 .card_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2em;
+
   .card {
     position: relative;
     padding: 1.5em 1em;
     border: 0.1em solid var(--primary);
     border-radius: 0.4em;
     cursor: pointer;
-    transition: 300ms;
+    transition: all 300ms ease-in-out;
 
     .card_title,
     .card_note {
@@ -76,7 +82,6 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 4;
       overflow: hidden;
-      /* text-overflow: ellipsis; */
     }
 
     .date_time_section {
@@ -87,86 +92,12 @@
       top: -9px;
       right: 12px;
       transition: 300ms;
-    }
-
-    .complete_button{
-      font-size: 1.25em;
-      display: flex;
-      gap: 5px;
-      /* justify-content: center; */
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
-
-      .check_icon {
-        display: none;
-        color: var(--primary);
-        padding: 0.1em;
-        transition: 300ms;
-      }
-    }
-
-
-    .action_buttons {
-      font-size: 1.25em;
-      display: flex;
-      gap: 5px;
-      /* justify-content: center; */
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-
-      .edit_icon,
-      .delete_icon {
-        display: none;
-        color: var(--primary);
-        background-color: var(--secondary);
-        border-radius: 50%;
-        padding: 0.1em;
-        /* will-change: filter; */
-        transition: 300ms;
-      }
-
-      .edit_icon:hover {
-        color: #ffff;
-      }
-      .delete_icon:hover {
-        color: crimson;
-        /* filter: drop-shadow(0 0 0.3em var(--primary)); */
-      }
-
-      
-    }
-    .complete_button {
-      font-size: 1.25em;
-      display: flex;
-      gap: 5px;
-      /* justify-content: center; */
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
-
-      .edit_icon {
-        display: none;
-        color: var(--primary);
-        background-color: var(--secondary);
-        border-radius: 50%;
-        padding: 0.1em;
-        /* will-change: filter; */
-        transition: 300ms;
-      }
-
-      .edit_icon:hover {
-        color: #ffff;
-      }
+      z-index: 100;
     }
 
     .view_button {
-      display: none;
-      will-change: filter;
-      transition: filter, 300ms;
-    }
-    .view_button:hover {
+      visibility: hidden;
+      display: flex;
       font-size: 1.5em;
       color: var(--primary);
       position: absolute;
@@ -174,64 +105,86 @@
       bottom: 0;
       right: 0;
       left: 0;
-      display: flex;
-      place-content: center;
-      place-items: center;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-  }
-
-  .card:hover {
-    box-shadow: 0 0 2em 0 var(--primary);
-
-    .edit_icon,
-    .delete_icon {
-      display: block;
-      z-index: 200;
-    }
-
-    .date_time_section {
-      top: 0;
-      z-index: 200;
-      background-color: transparent;
-    }
-
-    .date_time_section > span {
-      filter: drop-shadow(0 0 0.5em var(--light));
-      color: var(--light);
-    }
-
-    .view_button {
-      font-size: 1.5em;
-      color: var(--primary);
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      display: flex;
       place-content: center;
       place-items: center;
       border-radius: 0.4em;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-    .eye_icon:hover {
-      color: #ffff;
-      filter: drop-shadow(0 0 0.3em var(--light));
+      background-color: transparent;
+      transition: all 300ms;
+
+      .complete_task_button {
+        font-size: 1.25rem;
+        display: flex;
+        gap: 5px;
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+
+        .check_icon {
+          z-index: 200;
+          color: var(--primary);
+          padding: 0.1em;
+        }
+      }
+
+      .action_buttons {
+        font-size: 1.25rem;
+        display: flex;
+        gap: 5px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+
+        .edit_icon,
+        .delete_icon {
+          z-index: 200;
+          color: var(--primary);
+          background-color: var(--secondary);
+          border-radius: 50%;
+          padding: 0.1em;
+        }
+
+        .edit_icon:hover {
+          color: #ffff;
+        }
+        .delete_icon:hover {
+          color: crimson;
+        }
+      }
     }
 
-    .check_icon{
-      display: block;
-      z-index: 200;
-    }
+    &:hover {
+      box-shadow: 0px 0px 10px var(--primary);
 
-    .check_icon:hover{
-      color: #ffff;
-      filter: drop-shadow(0 0 0.3em var(--light));
+      .date_time_section {
+        background-color: transparent;
+        top: 0;
+        color: var(--light);
+      }
+
+      .view_button {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.8);
+
+        .eye_icon:hover {
+          color: #ffff;
+          filter: drop-shadow(0 0 0.3em var(--light));
+        }
+
+        .check_icon {
+          /* display: block; */
+
+          &:hover {
+            color: #ffff;
+            filter: drop-shadow(0 0 0.3em var(--light));
+          }
+        }
+      }
     }
   }
 
-  .task_completed {
+  /* TASK COMPLETED CARD */
+
+  .task_completed_card {
     position: relative;
     padding: 1.5em 1em;
     border: 0.1em solid var(--secondary);
@@ -261,7 +214,6 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 4;
       overflow: hidden;
-      /* text-overflow: ellipsis; */
     }
 
     .date_time_section {
@@ -274,99 +226,8 @@
       transition: 300ms;
     }
 
-    .action_buttons {
-      font-size: 1.25em;
-      display: flex;
-      gap: 5px;
-      /* justify-content: center; */
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-
-      .edit_icon,
-      .delete_icon {
-        display: none;
-        color: var(--primary);
-        background-color: var(--secondary);
-        border-radius: 50%;
-        padding: 0.1em;
-        /* will-change: filter; */
-        transition: 300ms;
-      }
-
-      .edit_icon:hover {
-        color: #ffff;
-      }
-      .delete_icon:hover {
-        color: crimson;
-        /* filter: drop-shadow(0 0 0.3em var(--primary)); */
-      }
-    }
-
-    .complete_button {
-      font-size: 1.25em;
-      display: flex;
-      gap: 5px;
-      /* justify-content: center; */
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
-
-      .check_icon {
-        display: none;
-        color: var(--primary);
-        padding: 0.1em;
-        transition: 300ms;
-      }
-
-    }
-
     .view_button {
-      display: none;
-      will-change: filter;
-      transition: filter, 300ms;
-    }
-    .view_button:hover {
-      font-size: 1.5em;
-      color: var(--primary);
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      display: flex;
-      place-content: center;
-      place-items: center;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-  }
-
-  .task_completed:hover {
-    box-shadow: 0 0 2em 0 var(--light);
-
-    .edit_icon,
-    .delete_icon {
-      display: block;
-      z-index: 200;
-    }
-
-    .check_icon {
-      display: block;
-      z-index: 200;
-    }
-
-    .date_time_section {
-      top: 0;
-      z-index: 200;
-      background-color: transparent;
-    }
-
-    .date_time_section > span {
-      /* filter: drop-shadow(0 0 0.5em var(--light)); */
-      color: var(--secondary);
-    }
-
-    .view_button {
+      visibility: hidden;
       font-size: 1.5em;
       color: var(--primary);
       position: absolute;
@@ -378,17 +239,96 @@
       place-content: center;
       place-items: center;
       border-radius: 0.4em;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-    .eye_icon:hover {
-      color: #ffff;
-      filter: drop-shadow(0 0 0.3em var(--light));
+      transition: all 300ms;
+      background-color: transparent;
+
+      .action_buttons {
+        font-size: 1.25rem;
+        display: flex;
+        gap: 5px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+
+        .edit_icon,
+        .delete_icon {
+          color: var(--primary);
+          background-color: var(--secondary);
+          border-radius: 50%;
+          padding: 0.1em;
+        }
+
+        .edit_icon:hover {
+          color: #ffff;
+        }
+        .delete_icon:hover {
+          color: crimson;
+        }
+      }
+
+      .complete_task_button {
+        font-size: 1.25rem;
+        display: flex;
+        gap: 5px;
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+
+        .check_icon {
+          color: var(--primary);
+          padding: 0.1em;
+        }
+      }
     }
 
-    .check_icon:hover {
-      color: #ffff;
-      filter: drop-shadow(0 0 0.3em var(--light));
+    &:hover {
+      box-shadow: 0 0 10px var(--light);
+
+      .date_time_section {
+        top: 0;
+        z-index: 200;
+        background-color: transparent;
+        color: var(--light);
+      }
+
+      .view_button {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.8);
+
+        .eye_icon:hover {
+          color: #ffff;
+          filter: drop-shadow(0 0 0.3em var(--light));
+        }
+
+        .check_icon {
+          z-index: 200;
+
+          &:hover {
+            color: #ffff;
+            filter: drop-shadow(0 0 0.3em var(--light));
+          }
+        }
+
+        .edit_icon,
+        .delete_icon {
+          z-index: 200;
+        }
+      }
     }
+
+    /* .view_button:hover {
+      font-size: 1.5em;
+      color: var(--primary);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+    } */
   }
 }
 
